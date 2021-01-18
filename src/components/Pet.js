@@ -1,21 +1,24 @@
 import React from 'react'
 
 class Pet extends React.Component {
-  constructor() {
-    super();
-  this.state = {
-    isAdopted: false
-  }
-  }
+  // constructor() {
+  //   super();
+  // // this.state = {
+  // //   isAdopted: false
+  // // }
+  // }
 
   handleClick = () => {
+    // this.setState({
+    //   isAdopted: true
+    // })
     this.props.onAdoptPet(this.props.pet.id)
   }
 
   render() {
 
     let button;
-    if (this.state.isAdopted) {
+    if (this.props.pet.isAdopted) {
       button = <button className="ui disabled button">Already adopted</button>;
     } else {
       button = <button className="ui primary button" onClick={this.handleClick}>Adopt pet</button>;
@@ -25,8 +28,8 @@ class Pet extends React.Component {
       <div className="card">
         <div className="content">
           <a className="header">
-          { this.props.pet.gender == 'female' && <p>♀</p> }
-          { this.props.pet.gender == 'male' && <p>♂</p> }
+          { this.props.pet.gender === 'female' && <p>♀</p> }
+          { this.props.pet.gender === 'male' && <p>♂</p> }
             {/*'♀' OR '♂' */}
             {this.props.pet.name}
           </a>
